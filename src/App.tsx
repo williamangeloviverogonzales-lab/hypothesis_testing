@@ -143,7 +143,7 @@ export function App() {
         <div>
           <h1 className="app-title">5-Step Hypothesis Testing Guide</h1>
           <p className="app-subtitle">
-            One-sample z-test (mean & proportion) and one-sample t-test (mean)
+            One-sample z-test (mean & proportion) and one-sample t-test (mean) by W.A. Gonzales
           </p>
         </div>
         <button type="button" className="btn" onClick={handleReset}>
