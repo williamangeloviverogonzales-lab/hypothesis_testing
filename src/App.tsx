@@ -138,69 +138,38 @@ export function App() {
   };
 
   return (
-    <main style={{ maxWidth: 880, margin: '0 auto', padding: '2rem 1.25rem' }}>
-      <header
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          gap: '1rem',
-          marginBottom: '1.5rem',
-        }}
-      >
+    <main className="app-shell">
+      <header className="app-header">
         <div>
-          <h1 style={{ margin: 0, fontSize: '1.6rem' }}>
-            5-Step Hypothesis Testing Guide
-          </h1>
-          <p style={{ margin: '0.25rem 0 0', opacity: 0.75 }}>
+          <h1 className="app-title">5-Step Hypothesis Testing Guide</h1>
+          <p className="app-subtitle">
             One-sample z-test (mean & proportion) and one-sample t-test (mean)
           </p>
         </div>
-        <button type="button" onClick={handleReset}>
+        <button type="button" className="btn" onClick={handleReset}>
           Reset
         </button>
       </header>
 
-      <nav
-        aria-label="Hypothesis testing steps"
-        style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(5, minmax(0, 1fr))',
-          gap: '0.5rem',
-          marginBottom: '1.5rem',
-        }}
-      >
+      <nav className="stepper-nav" aria-label="Hypothesis testing steps">
         {STEP_LABELS.map(({ step, title }) => {
           const isActive = activeSession.currentStep === step;
           return (
             <button
               key={step}
               type="button"
+              className="step-tab"
               onClick={() => setStep(step)}
               aria-current={isActive ? 'step' : undefined}
-              style={{
-                padding: '0.65rem 0.5rem',
-                fontWeight: isActive ? 700 : 500,
-                border: isActive ? '2px solid currentColor' : '1px solid #8884',
-                borderRadius: 8,
-                cursor: 'pointer',
-              }}
             >
-              <div>Step {step}</div>
-              <div style={{ fontSize: '0.8rem' }}>{title}</div>
+              <span className="step-tab-num">Step {step}</span>
+              <span className="step-tab-title">{title}</span>
             </button>
           );
         })}
       </nav>
 
-      <section
-        style={{
-          border: '1px solid #8884',
-          borderRadius: 12,
-          padding: '1.5rem',
-          minHeight: 240,
-        }}
-      >
+      <section className="workspace-card">
         {activeSession.currentStep === 1 && (
           <Step1Setup
             setup={activeSession.setup}
@@ -258,15 +227,10 @@ export function App() {
         )}
       </section>
 
-      <footer
-        style={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          marginTop: '1.25rem',
-        }}
-      >
+      <footer className="workspace-footer">
         <button
           type="button"
+          className="btn"
           disabled={activeSession.currentStep === 1}
           onClick={() =>
             setStep(Math.max(1, activeSession.currentStep - 1) as 1 | 2 | 3 | 4 | 5)
@@ -276,6 +240,7 @@ export function App() {
         </button>
         <button
           type="button"
+          className="btn btn-primary"
           disabled={activeSession.currentStep === 5}
           onClick={() =>
             setStep(Math.min(5, activeSession.currentStep + 1) as 1 | 2 | 3 | 4 | 5)
