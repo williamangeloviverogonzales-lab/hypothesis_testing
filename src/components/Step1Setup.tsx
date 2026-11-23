@@ -192,9 +192,9 @@ export function Step1Setup({
             <div style={{ display: 'flex', gap: '0.5rem' }}>
               {(
                 [
-                  { op: '<'},
-                  { op: '>'},
-                  { op: '!='},
+                  { op: '<', label: `<` },
+                  { op: '>', label: `>` },
+                  { op: '!=', label: `≠` },
                 ] as { op: HaOperator; label: string }[]
               ).map((choice) => {
                 const active = setup.haOperator === choice.op;
